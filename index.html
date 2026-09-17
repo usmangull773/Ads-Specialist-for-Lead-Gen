@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OnLead — Full-Funnel Fireplace Lead Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F6F3EE; --paper:#FFFFFF; --ink:#1C1B19; --muted:#6E6A63;
+    --line:#E4DED4; --brass:#B08D57; --brass-d:#93713F; --stone:#EAE4D9;
+    --shadow:0 20px 55px -22px rgba(28,27,25,.30);
+    --good:#3E6B4F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased}
+  body{background:var(--ivory);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.5;}
+  .wrap{max-width:1140px;margin:0 auto;padding:52px 30px 42px;}
+
+  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass-d);font-weight:600;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--brass);display:inline-block;}
+
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;}
+  @media(max-width:840px){.hero{grid-template-columns:1fr;gap:34px}}
+  h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,3.5vw,43px);line-height:1.08;letter-spacing:-.01em;margin:18px 0 16px;}
+  h1 em{font-style:italic;color:var(--brass-d);}
+  .lede{font-size:15.5px;color:var(--muted);max-width:52ch;}
+  .lede b{color:var(--ink);font-weight:600;}
+  .metaline{margin-top:22px;display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted);flex-wrap:wrap;}
+  .metaline .dot{width:6px;height:6px;border-radius:50%;background:var(--brass);}
+
+  /* PATH CARD (hero right) */
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);}
+  .pcard{padding:22px 22px 20px;}
+  .pcard .ph{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px;}
+  .path{display:flex;flex-direction:column;gap:10px;}
+  .node{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#fcfbf8;}
+  .node .ni{width:30px;height:30px;border-radius:8px;background:var(--stone);display:grid;place-items:center;flex-shrink:0;}
+  .ni svg{width:16px;height:16px;stroke:var(--brass-d);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+  .node.win .ni svg{stroke:var(--good);}
+  .node h4{font-size:13px;font-weight:600;}
+  .node p{font-size:11.5px;color:var(--muted);}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .node.hi{border-color:var(--brass);background:linear-gradient(180deg,#fbf6ee,#fff);}
+  .node.win{border-color:var(--good);}
+  .node.win .ni{background:#e2ede5;}
+  .node.win h4{color:var(--good);}
+  .arrow{height:14px;position:relative;}
+  .arrow::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1.5px;background:var(--line);}
+
+  /* SECTIONS */
+  .sec{margin-top:52px;}
+  .sec-h{margin-bottom:22px;}
+  .sec-h h2{font-family:'Fraunces',serif;font-weight:500;font-size:26px;letter-spacing:-.01em;}
+  .sec-h .sub{font-size:13px;color:var(--muted);margin-top:5px;max-width:60ch;}
+
+  /* AUDIT */
+  .audit{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:840px){.audit{grid-template-columns:1fr}}
+  .leak{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 19px;box-shadow:0 12px 30px -24px rgba(28,27,25,.4);}
+  .leak .lk{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;color:var(--brass-d);display:flex;align-items:center;gap:8px;margin-bottom:11px;}
+  .leak .lk::before{content:"";width:16px;height:1.5px;background:var(--brass);}
+  .leak h3{font-family:'Fraunces',serif;font-weight:500;font-size:17px;line-height:1.2;margin-bottom:8px;}
+  .leak p{font-size:12.5px;color:var(--muted);line-height:1.5;}
+  .leak .fix{margin-top:13px;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px;color:#39362f;}
+  .leak .fix b{color:var(--good);font-weight:600;}
+
+  /* KPI */
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media(max-width:840px){.kpis{grid-template-columns:1fr}}
+  .kpi{background:var(--ink);color:#fff;border-radius:14px;padding:22px 22px;position:relative;overflow:hidden;}
+  .kpi:nth-child(2){background:linear-gradient(135deg,var(--brass),var(--brass-d));}
+  .kpi .big{font-family:'Fraunces',serif;font-weight:500;font-size:34px;line-height:1;letter-spacing:-.01em;}
+  .kpi .lab{font-size:12px;margin-top:9px;opacity:.82;line-height:1.4;}
+
+  /* TIMELINE */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  @media(max-width:840px){.flow{grid-template-columns:1fr 1fr}}
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:18px 17px;}
+  .step .n{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--brass);color:var(--brass-d);display:grid;place-items:center;font-family:'Fraunces',serif;font-size:14px;font-weight:600;margin-bottom:12px;}
+  .step .day{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px;}
+  .step h3{font-size:14px;font-weight:600;margin-bottom:5px;}
+  .step p{font-size:12px;color:var(--muted);line-height:1.45;}
+
+  .foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .foot .mk{font-family:'Fraunces',serif;font-size:14px;color:var(--ink);font-weight:500;}
+  .foot p{font-size:12px;color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Prepared for OnLead · Fireplace campaign</div>
+      <h1>Every fireplace lead tracked to the keyword that earned it. <em>The phone call included.</em></h1>
+      <p class="lede">In home services, most of the money is on the phone, and most accounts never track that call. So the budget optimizes toward the wrong thing and the real cost per lead stays hidden. Here is the setup that fixes it, and gets you under <b>$100 CAD per lead</b>.</p>
+      <div class="metaline"><span class="dot"></span> Campaign build &nbsp;·&nbsp; GTM + GA4 + conversions &nbsp;·&nbsp; call &amp; form tracking &nbsp;·&nbsp; landing page</div>
+    </div>
+
+    <div class="card pcard">
+      <div class="ph">From click to booked job</div>
+      <div class="path">
+        <div class="node"><div class="ni"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><div><h4>Search ad</h4><p>High-intent fireplace &amp; install terms, Ontario</p></div></div>
+        <div class="arrow"></div>
+        <div class="node hi"><div class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M9 22h6"/></svg></div><div><h4>Dedicated landing page</h4><p>One offer, click-to-call, built to convert</p></div></div>
+        <div class="arrow"></div>
+        <div class="split">
+          <div class="node"><div class="ni"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M8 13h8M8 17h6"/></svg></div><div><h4>Form</h4><p>Tracked</p></div></div>
+          <div class="node"><div class="ni"><svg viewBox="0 0 24 24"><path d="M6 3h4l2 5-2.5 1.6a11 11 0 0 0 5 5L16 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z"/></svg></div><div><h4>Phone call</h4><p>Tracked</p></div></div>
+        </div>
+        <div class="arrow"></div>
+        <div class="node win"><div class="ni"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 7"/></svg></div><div><h4>Booked job, under $100 / lead</h4><p>Every lead tied back to its keyword</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIT -->
+  <section class="sec">
+    <div class="sec-h">
+      <h2>Where fireplace ad budgets quietly leak</h2>
+      <div class="sub">The three gaps we see again and again in home-service accounts, and the fix that goes in from day one.</div>
+    </div>
+    <div class="audit">
+      <div class="leak">
+        <div class="lk">Leak 01</div>
+        <h3>Phone calls go untracked</h3>
+        <p>Homeowners call before they book. If those calls are not counted as conversions, Google optimizes toward form fills only and the true cost per lead stays invisible.</p>
+        <div class="fix"><b>Fix:</b> call conversion tracking, every call tied to the campaign and keyword that drove it.</div>
+      </div>
+      <div class="leak">
+        <div class="lk">Leak 02</div>
+        <h3>The homepage is the landing page</h3>
+        <p>Ad clicks land on a busy homepage with no single offer and no clear call button, so paid traffic bounces and the click is wasted.</p>
+        <div class="fix"><b>Fix:</b> a dedicated page, one offer, mobile-first, form and click-to-call above the fold.</div>
+      </div>
+      <div class="leak">
+        <div class="lk">Leak 03</div>
+        <h3>No negative keywords</h3>
+        <p>Budget burns on renters, DIY, repair-part, and job-seeker searches that never buy, pushing the cost per real lead up fast.</p>
+        <div class="fix"><b>Fix:</b> an airtight negative list from launch, refined weekly on the search-terms report.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KPI -->
+  <section class="sec">
+    <div class="sec-h">
+      <h2>What a properly tracked account looks like</h2>
+      <div class="sub">For context: the home-services average cost per lead on Google Ads sits near $91 USD. The target below is what tight tracking, one strong page, and clean negatives make realistic.</div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="big">100%</div><div class="lab">of leads tracked, form and phone call, tied to the keyword that earned them</div></div>
+      <div class="kpi"><div class="big">&lt; $100</div><div class="lab">CAD cost per lead, the goal we build the whole account around</div></div>
+      <div class="kpi"><div class="big">8 &rarr; 4</div><div class="lab">ad creatives launched, then cut to the four winners on real performance</div></div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="sec">
+    <div class="sec-h">
+      <h2>Your first 7 days</h2>
+      <div class="sub">A clear path from kickoff to a live, fully tracked campaign, ready to optimize.</div>
+    </div>
+    <div class="flow">
+      <div class="step"><div class="n">1</div><div class="day">Days 1 to 2</div><h3>Tracking foundation</h3><p>GTM, GA4, and Google Ads conversions for form and call, tested and confirmed firing.</p></div>
+      <div class="step"><div class="n">2</div><div class="day">Days 3 to 5</div><h3>Page &amp; creatives</h3><p>Dedicated landing page built, plus 8 ad creatives across the strongest offer angles.</p></div>
+      <div class="step"><div class="n">3</div><div class="day">Days 5 to 7</div><h3>Launch</h3><p>Campaign structure and negatives live, all 8 ads running, geo-locked to the service area.</p></div>
+      <div class="step"><div class="n">4</div><div class="day">Week 2 onward</div><h3>Optimize</h3><p>Cut to the best 4 ads, mine search terms, tune bids toward a lower cost per lead.</p></div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <p class="mk">Built for OnLead. Ready to start on the fireplace account.</p>
+    <p>Concept for discussion.</p>
+  </div>
+
+</div>
+</body>
+</html>
